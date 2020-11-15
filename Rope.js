@@ -1,10 +1,14 @@
 class Rope{
-    constructor(bodyA,bodyB){
+    constructor(bodyA,bodyB,offsetX,offsetY){
+
+        this.offsetX = offsetX
+        this.offsetY = offsetY
 
         var options = {
 
             bodyA : bodyA,
             bodyB : bodyB,
+            pointB:{x:this.offsetX,y:this.offsetY},
             stiffness : 0.02,
             length : 10
 
@@ -17,11 +21,14 @@ class Rope{
 
     display(){
 
+        push();
         var posA = this.rope.bodyA.position;
         var posB = this.rope.bodyB.position;
 
         strokeWeight(5)
+        stroke("yellow")
         line(posA.x,posA.y,posB.x,posB.y);
+        pop();
     }
 
 
